@@ -2,8 +2,19 @@ name: IPQ60XX-ALL
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 19 * * *
+    inputs:
+      NO_DOCKERMAN:
+        description: 'Not build luci-app-dockerman'
+        required: true
+        default: false
+        type: boolean
+      ssh:
+        description: 'SSH connection to Actions'
+        required: true
+        default: false
+        type: boolean
+  #schedule:
+  #  - cron: 0 19 * * *
 
 env:
   REPO_URL: https://github.com/King-Of-Knights/openwrt-6.x.git
