@@ -9,6 +9,12 @@ sed -i 's/192.168.1.1/192.168.68.1/g' package/base-files/files/bin/config_genera
 # 去掉默认密码
 sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/base-files/files/etc/shadow
 
+#替换默认主题为luci-theme-infinityfreedom
+#sed -i 's/luci-theme-bootstrap/luci-theme-infinityfreedom/' feeds/luci/collections/luci/Makefile
+
+# 修改默认主机名
+sed -i '/uci commit system/i\uci set system.@system[0].hostname='OpenWrt'' package/base-files/files/bin/config_generate
+
 # TTYD 免登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
